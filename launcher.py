@@ -65,12 +65,12 @@ def remove_shortcut(shortcuts, pointer):
 
 def main():
     shortcuts = [["name", ["echo 'what did you expect'", "/"]]]
-    if os.path.exists(os.path.join(os.path.abspath(os.path.dirname(__file__)), "shortcuts.pb")):
-        with open("shortcuts.pb", "rb") as file:
+    if os.path.exists(os.path.join(os.path.abspath(os.path.dirname(__file__)), ".shortcuts.pb")):
+        with open(".shortcuts.pb", "rb") as file:
             shortcuts = pickle.load(file)
     else:
-        print("No shortcuts.pb file found, a new one has been created")
-        with open("shortcuts.pb", "wb") as file:
+        print("No .shortcuts.pb file found, a new one has been created")
+        with open(".shortcuts.pb", "wb") as file:
             pickle.dump(shortcuts, file)
     limit = len(shortcuts) - 1
     pointer = 0
@@ -92,14 +92,14 @@ def main():
         elif inp == "n":
             shortcuts = new_shortcut(shortcuts)# new shortcut
             limit += 1
-            with open("shortcuts.pb", "wb") as file:
+            with open(".shortcuts.pb", "wb") as file:
                 pickle.dump(shortcuts, file)
             print("\033[H\033[0J", end="")
             outp_table(True, shortcuts, pointer, 0)
         elif inp == "r":
             shortcuts = remove_shortcut(shortcuts, pointer) # remove
             limit -= 1
-            with open("shortcuts.pb", "wb") as file:
+            with open(".shortcuts.pb", "wb") as file:
                 pickle.dump(shortcuts, file)
             print("\033[H\033[0J", end="")
             outp_table(True, shortcuts, pointer, 0)

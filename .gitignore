@@ -3,5 +3,7 @@ launcher_todo.org~
 linux_kbd.py
 shortcuts.pb
 shortcuts.pb.backup
+.shortcuts.pb
+.shortcuts.pb.backup
 .gitignore.swp
 .launcher.py.swp
